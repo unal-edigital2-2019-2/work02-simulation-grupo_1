@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-12-17T12:41:59</DateModified>
+  <DateModified>2020-01-07T11:14:54</DateModified>
   <ModuleName>test_cam</ModuleName>
-  <SummaryTimeStamp>2019-12-04T09:42:16</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/UECCI/Documents/GitHub/digital2/work02/hw/iseconfig/test_cam.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/UECCI/Documents/GitHub/digital2/work02/hw\</ImplementationReportsDirectory>
-  <DateInitialized>2019-11-04T13:14:13</DateInitialized>
+  <SummaryTimeStamp>2020-01-06T16:58:47</SummaryTimeStamp>
+  <SavedFilePath>/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/iseconfig/test_cam.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/</ImplementationReportsDirectory>
+  <DateInitialized>2020-01-06T17:07:33</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>

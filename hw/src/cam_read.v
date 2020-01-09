@@ -19,7 +19,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module cam_read #(
-		parameter AW = 15 // Cantidad de bits  de la dirección 
+		parameter AW = 15 // Cantidad de bits  de la direccin 
 		)(
 		input pclk,
 		input rst,
@@ -27,19 +27,46 @@ module cam_read #(
 		input href,
 		input [7:0] px_data,
 
-		output [AW-1:0] mem_px_addr,
-		output [7:0]  mem_px_data,
-		output px_wr
+		output reg [AW-1:0] mem_px_addr,
+		output reg [7:0]  mem_px_data,
+		output reg px_wr
    );
 	
+reg countData;
 
-/********************************************************************************
+initial begin
+	countData <= 0;
+	mem_px_addr <= -1;
+end
 
-Por favor colocar en este archivo el desarrollo realizado por el grupo para la 
-captura de datos de la camara 
+always @(posedge pclk)begin
+	if(!vsync)begin
+		if(href)begin
+			if(countData == 0)begin
+				mem_px_data[7] <= px_data[7];
+				mem_px_data[6] <= px_data[6];
+				mem_px_data[5] <= px_data[5];
+				mem_px_data[4] <= px_data[2];
+				mem_px_data[3] <= px_data[1];
+				mem_px_data[2] <= px_data[0];
+				countData <= 1;
+				px_wr <= 0;
+			end
+			if(countData == 1)begin
+				mem_px_data[1] <= mem_px_data[4];
+				mem_px_data[0] <= mem_px_data[3];
+				px_wr <= 1;
+				mem_px_addr <= mem_px_addr + 1;
+				countData <= 0;
+			end
+		end else begin
+			px_wr <= 0;
+		end
+	end else begin
+		mem_px_addr <= 0;
+		px_wr <= 0;
+	end
+end
 
-debe tener en cuenta el nombre de las entradas  y salidad propuestas 
-
-********************************************************************************/
 
 endmodule

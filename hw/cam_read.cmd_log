@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/cam_read.xst" -ofn "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/cam_read.syr" 
+xst -intstyle ise -ifn "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/cam_read.xst" -ofn "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/cam_read.syr" 
