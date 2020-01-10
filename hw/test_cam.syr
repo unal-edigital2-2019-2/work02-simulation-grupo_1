@@ -157,7 +157,7 @@ WARNING:HDLCompiler:413 - "/home/jhonathann/Escritorio/Digital 2/Proyecto digita
 WARNING:HDLCompiler:413 - "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/src/test_cam.v" Line 162: Result of 17-bit expression is truncated to fit in 15-bit target.
 
 Elaborating module <cam_read(AW=15)>.
-WARNING:HDLCompiler:413 - "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/src/cam_read.v" Line 59: Result of 16-bit expression is truncated to fit in 15-bit target.
+WARNING:HDLCompiler:413 - "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/src/cam_read.v" Line 60: Result of 16-bit expression is truncated to fit in 15-bit target.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -219,13 +219,11 @@ Unit <VGA_Driver640x480> synthesized.
 Synthesizing Unit <cam_read>.
     Related source file is "/home/jhonathann/Escritorio/Digital 2/Proyecto digital 2/work02-simulation-grupo_1/hw/src/cam_read.v".
         AW = 15
-WARNING:Xst:647 - Input <px_data<4:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <countData>.
     Found 1-bit register for signal <px_wr>.
     Found 15-bit register for signal <mem_px_addr>.
     Found 8-bit register for signal <mem_px_data>.
-    Found 15-bit adder for signal <mem_px_addr[14]_GND_8_o_add_3_OUT> created at line 59.
+    Found 15-bit adder for signal <mem_px_addr[14]_GND_8_o_add_3_OUT> created at line 60.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  25 D-type flip-flop(s).
@@ -377,13 +375,13 @@ Top Level Output File Name         : test_cam.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 233
+# BELS                             : 235
 #      GND                         : 1
 #      INV                         : 3
 #      LUT1                        : 35
-#      LUT2                        : 35
+#      LUT2                        : 34
 #      LUT3                        : 16
-#      LUT4                        : 12
+#      LUT4                        : 15
 #      LUT5                        : 11
 #      LUT6                        : 10
 #      MUXCY                       : 52
@@ -401,8 +399,8 @@ Primitive and Black Box Usage:
 # Clock Buffers                    : 5
 #      BUFG                        : 4
 #      BUFGP                       : 1
-# IO Buffers                       : 27
-#      IBUF                        : 9
+# IO Buffers                       : 29
+#      IBUF                        : 11
 #      IBUFG                       : 1
 #      OBUF                        : 17
 # Others                           : 1
@@ -416,19 +414,19 @@ Selected Device : 7a100tcsg324-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:              44  out of  126800     0%  
- Number of Slice LUTs:                  122  out of  63400     0%  
-    Number used as Logic:               122  out of  63400     0%  
+ Number of Slice LUTs:                  124  out of  63400     0%  
+    Number used as Logic:               124  out of  63400     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    122
-   Number with an unused Flip Flop:      78  out of    122    63%  
-   Number with an unused LUT:             0  out of    122     0%  
-   Number of fully used LUT-FF pairs:    44  out of    122    36%  
+ Number of LUT Flip Flop pairs used:    124
+   Number with an unused Flip Flop:      80  out of    124    64%  
+   Number with an unused LUT:             0  out of    124     0%  
+   Number of fully used LUT-FF pairs:    44  out of    124    35%  
    Number of unique control sets:         8
 
 IO Utilization: 
  Number of IOs:                          30
- Number of bonded IOBs:                  28  out of    210    13%  
+ Number of bonded IOBs:                  30  out of    210    14%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:                8  out of    135     5%  
@@ -469,9 +467,9 @@ Timing Summary:
 Speed Grade: -3
 
    Minimum period: 2.079ns (Maximum Frequency: 481.047MHz)
-   Minimum input arrival time before clock: 1.367ns
+   Minimum input arrival time before clock: 1.395ns
    Maximum output required time after clock: 1.784ns
-   Maximum combinational path delay: 0.340ns
+   Maximum combinational path delay: 0.368ns
 
 Timing Details:
 ---------------
@@ -480,7 +478,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CAM_pclk'
   Clock period: 1.820ns (frequency: 549.330MHz)
-  Total number of paths / destination ports: 164 / 49
+  Total number of paths / destination ports: 163 / 49
 -------------------------------------------------------------------------
 Delay:               1.820ns (Levels of Logic = 16)
   Source:            ov7076_565_to_332/mem_px_addr_0 (FF)
@@ -540,9 +538,9 @@ Delay:               2.079ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CAM_pclk'
-  Total number of paths / destination ports: 58 / 48
+  Total number of paths / destination ports: 102 / 50
 -------------------------------------------------------------------------
-Offset:              1.321ns (Levels of Logic = 2)
+Offset:              1.297ns (Levels of Logic = 2)
   Source:            CAM_vsync (PAD)
   Destination:       ov7076_565_to_332/countData (FF)
   Destination Clock: CAM_pclk rising
@@ -551,18 +549,18 @@ Offset:              1.321ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            19   0.001   0.595  CAM_vsync_IBUF (CAM_vsync_IBUF)
-     LUT3:I0->O            1   0.097   0.279  ov7076_565_to_332/_n00461 (ov7076_565_to_332/_n0046)
+     IBUF:I->O             4   0.001   0.570  CAM_vsync_IBUF (CAM_vsync_IBUF)
+     LUT4:I0->O            1   0.097   0.279  ov7076_565_to_332/_n00541 (ov7076_565_to_332/_n0054)
      FDR:R                     0.349          ov7076_565_to_332/countData
     ----------------------------------------
-    Total                      1.321ns (0.447ns logic, 0.874ns route)
-                                       (33.8% logic, 66.2% route)
+    Total                      1.297ns (0.447ns logic, 0.850ns route)
+                                       (34.5% logic, 65.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk25_24/clkout0'
   Total number of paths / destination ports: 21 / 21
 -------------------------------------------------------------------------
-Offset:              1.367ns (Levels of Logic = 3)
+Offset:              1.395ns (Levels of Logic = 3)
   Source:            rst (PAD)
   Destination:       VGA640x480/countX_8 (FF)
   Destination Clock: clk25_24/clkout0 rising
@@ -571,13 +569,13 @@ Offset:              1.367ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            14   0.001   0.753  rst_IBUF (rst_IBUF)
+     IBUF:I->O            20   0.001   0.781  rst_IBUF (rst_IBUF)
      LUT6:I0->O            8   0.097   0.412  VGA640x480/Mcount_countX_val2 (VGA640x480/Mcount_countX_val)
      LUT2:I0->O            1   0.097   0.000  VGA640x480/countX_8_rstpot (VGA640x480/countX_8_rstpot)
      FD:D                      0.008          VGA640x480/countX_8
     ----------------------------------------
-    Total                      1.367ns (0.203ns logic, 1.164ns route)
-                                       (14.8% logic, 85.2% route)
+    Total                      1.395ns (0.203ns logic, 1.192ns route)
+                                       (14.5% logic, 85.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk25_24/clkout0'
@@ -604,7 +602,7 @@ Offset:              1.784ns (Levels of Logic = 3)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Delay:               0.340ns (Levels of Logic = 1)
+Delay:               0.368ns (Levels of Logic = 1)
   Source:            rst (PAD)
   Destination:       clk25_24/mmcm_adv_inst:RST (PAD)
 
@@ -612,10 +610,10 @@ Delay:               0.340ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            14   0.001   0.339  rst_IBUF (rst_IBUF)
+     IBUF:I->O            20   0.001   0.367  rst_IBUF (rst_IBUF)
     MMCME2_ADV:RST             0.000          clk25_24/mmcm_adv_inst
     ----------------------------------------
-    Total                      0.340ns (0.001ns logic, 0.339ns route)
+    Total                      0.368ns (0.001ns logic, 0.367ns route)
                                        (0.3% logic, 99.7% route)
 
 =========================================================================
@@ -642,15 +640,15 @@ clk25_24/clkout0|    2.079|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 9.98 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.89 secs
  
 --> 
 
 
-Total memory usage is 500020 kilobytes
+Total memory usage is 500024 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   23 (   0 filtered)
+Number of warnings :   21 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

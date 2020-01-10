@@ -40,31 +40,33 @@ initial begin
 end
 
 always @(posedge pclk)begin
-	if(!vsync)begin
-		if(href)begin
-			if(countData == 0)begin
-				mem_px_data[7] <= px_data[7];
-				mem_px_data[6] <= px_data[6];
-				mem_px_data[5] <= px_data[5];
-				mem_px_data[4] <= px_data[2];
-				mem_px_data[3] <= px_data[1];
-				mem_px_data[2] <= px_data[0];
-				countData <= 1;
+	if(!rst)begin
+		if(!vsync)begin
+			if(href)begin
+				if(countData == 0)begin
+					mem_px_data[7] <= px_data[7];
+					mem_px_data[6] <= px_data[6];
+					mem_px_data[5] <= px_data[5];
+					mem_px_data[4] <= px_data[2];
+					mem_px_data[3] <= px_data[1];
+					mem_px_data[2] <= px_data[0];
+					countData <= 1;
+					px_wr <= 0;
+				end
+				if(countData == 1)begin
+					mem_px_data[1] <= px_data[4];
+					mem_px_data[0] <= px_data[3];
+					px_wr <= 1;
+					mem_px_addr <= mem_px_addr + 1;
+					countData <= 0;
+				end
+			end else begin
 				px_wr <= 0;
 			end
-			if(countData == 1)begin
-				mem_px_data[1] <= mem_px_data[4];
-				mem_px_data[0] <= mem_px_data[3];
-				px_wr <= 1;
-				mem_px_addr <= mem_px_addr + 1;
-				countData <= 0;
-			end
 		end else begin
+			mem_px_addr <= 0;
 			px_wr <= 0;
 		end
-	end else begin
-		mem_px_addr <= 0;
-		px_wr <= 0;
 	end
 end
 
