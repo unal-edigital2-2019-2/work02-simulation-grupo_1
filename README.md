@@ -52,7 +52,7 @@ Una vez clone el repositorio, en su computador de la plantilla del proyecto [WP0
 
 ***Nota:*** Observe que en esta instancia usted no ha modificado el hardware del proyecto, por lo tanto, lo que observa en la pantalla VGA simulada, es la imagen almacenada en memoria por defecto.
 
-7. Una vez tenga listo el anterior entorno de trabajo, debe proceder a  modificar el fichero  ***cam_read.v***. Solamnte en este módulo debe trabajar  y describir el funcionamiento de la adquiciòn de los datos de la cámara. 
+7. Una vez tenga listo el anterior entorno de trabajo, debe proceder a  modificar el fichero  ***cam_read.v***. Solamente en este módulo debe trabajar y describir el funcionamiento de la adquiciòn de los datos de la cámara. 
 
 8. Al terminar de decribir la adquisión de la cámara repita los paso 2 a 6.  Si el resultado es el que se observa en la siguiente imagen, indica que el módulo cam_read es adecuado y por lo tanto, se dara por terminado este paquete de trabajo, de lo contrario  vuelva al punto 7.
 
@@ -63,4 +63,9 @@ la imagen muestra que se adquirió una foto de color rojo.
 ***RECUEDE: Es necesario documentar la implementación y registrar la información en README.md, lo puede hacer con ayuda de imágenes o videos***
 
 
+## Resultados de simulación e implementación
+
+De acuerdo con lo descrito anteriormente, en primer lugar se realizó la prueba y simulación inicial del proyecto para verificar la correcta generación del archivo ***test_vga.txt*** y de la imagen por defecto presentada como parte de los resultados previstos. Esta primera prueba resultó exitosa al obtener la imagen de barras obtenida por defecto al simular el comportamiento de obtención de datos de la cámara.
+
+La versión actual del proyecto presenta la modificación del archivo ***cam_read.v***, correspondiente a la adecuada captura de datos de la cámara desde el primer momento mediante la definición de una máquina de estados finitos sincronizada con ***pclk*** en los momentos en que la señal **vsync** está en 0 y la señal **href** esta en 1. Dicha máquina cuenta con 2 estados, el primero de ellos corresponde a la transcripción de datos registrados por la cámara al vector de salida del módulo de acuerdo con la codificación de 8 bits definida para el formato 565 además de mantener la señal de escritura (**px_wr**) en 0, mientras el segundo estado pasa la señal de escritura a 1, aumenta el valor de la dirección de salida (**mem_px_addr**) y reescribe la información de los primeros bits del vector de salida (**mem_px_data[1,0]**) con la información de los bits **mem_px_data[4,3]**.
 
