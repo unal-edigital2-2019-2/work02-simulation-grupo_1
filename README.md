@@ -69,3 +69,10 @@ De acuerdo con lo descrito anteriormente, en primer lugar se realizó la prueba 
 
 La versión actual del proyecto presenta la modificación del archivo ***cam_read.v***, correspondiente a la adecuada captura de datos de la cámara desde el primer momento mediante la definición de una máquina de estados finitos sincronizada con ***pclk*** en los momentos en que la señal ***vsync*** está en 0 y la señal ***href*** esta en 1. Dicha máquina cuenta con 2 estados, el primero de ellos corresponde a la transcripción de datos registrados por la cámara al vector de salida del módulo de acuerdo con la codificación de 8 bits definida para el formato 565 además de mantener la señal de escritura (***px_wr***) en 0, mientras el segundo estado pasa la señal de escritura a 1, aumenta el valor de la dirección de salida (***mem_px_addr***) y reescribe la información de los primeros bits del vector de salida (***mem_px_data[1,0]***) con la información de los bits ***mem_px_data[4,3]***.
 
+A continuación se presentan las figuras correspondientes al resultado de la simulación del proyecto, con los cuales es posible corroborar el adecuado funcionamiento del módulo de obtención de datos de la cámara y su conexión a los demás módulos proporcionados para la visualización en pantalla de dicha información.
+
+
+![DIAGRAMA](./docs/figs/frame.png)
+
+![DIAGRAMA](./docs/figs/frame(1).png)
+
